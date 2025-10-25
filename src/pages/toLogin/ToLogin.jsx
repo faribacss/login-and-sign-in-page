@@ -9,13 +9,13 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import {login} from "../../services/authentication";
 
 function ToLogin() {
-    const [email, setEmail] = useState("");
+    const [identifier, setIdentifier] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
     const handleLogin = async () => {
         try {
-            const user = await login({ identifier: email, password });
+            const user = await login({ identifier, password });
             Swal.fire({
                 customClass: {
                     popup: 'custom-swal'
@@ -47,7 +47,7 @@ function ToLogin() {
     event.preventDefault();};
     const handleMouseUpPassword = (event) => {
     event.preventDefault();};
-    
+
     return(
         <Grid container spacing={2} alignItems="center" justifyContent={{ xs: 'center' }}>
       <Grid item xs={12} md={6} margin='25px auto'>
@@ -72,7 +72,7 @@ function ToLogin() {
           <Grid container spacing={2} direction="column">
             <Grid item>
               <TextField
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => setIdentifier(e.target.value)}
                 fullWidth
                 label="Email"
                 sx={{ width: "404px", height: "58px" }}
@@ -133,7 +133,7 @@ function ToLogin() {
                   }
                 }}
               >
-                Sign In
+                Login
               </Button>
             </Grid>
             
