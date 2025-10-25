@@ -1,5 +1,5 @@
 import Swal from "sweetalert2";
-import "AlertStyle.css";
+import "../../index.css";
 
 function showErrorAlert(type = "default") {
     const titleMessage = () => {
