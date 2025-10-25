@@ -14,10 +14,7 @@ function ToLogin() {
     // const navigate = useNavigate();
 
     const handleLogin = async () => {
-        const user = await login({
-            email: email,
-            password: password,
-        });
+        const user = await login({ identifier: email, password });
         return user;
     }
 
