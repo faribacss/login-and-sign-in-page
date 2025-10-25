@@ -6,6 +6,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import { register } from "../../services/authentication";
+import IsTrue from "../utilities/IsTrue";
+import IsFalse from "../utilities/IsFalse";
 
 function ToSignUp() {
   const [userName, setUserName] = useState("");
@@ -21,27 +23,11 @@ function ToSignUp() {
         email: email,
         password: password,
       });
-      Swal.fire({
-        customClass: {
-          popup: 'custom-swal'
-        },
-        position: "center",
-        icon: "success",
-        title: "You have successfully signed up!",
-        showConfirmButton: false,
-        timer: 1800,
-      });
+      <IsTrue type="signUp" />
       navigate("/");
       return user;
     } catch (error) {
-      Swal.fire({
-        customClass: {
-          popup: 'custom-swal'
-        },
-        position: "center",
-        icon: "error",
-        text: "Sign up failed! Please check your information.",
-      });
+      <IsFalse type="signUp" />
       console.error("Registration error:", error);
     }
   }

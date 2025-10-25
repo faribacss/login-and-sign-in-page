@@ -7,6 +7,8 @@ import React, { useState } from "react";
 import Swal from "sweetalert2";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import {login} from "../../services/authentication";
+import IsTrue from "../utilities/IsTrue";
+import IsFalse from "../utilities/IsFalse";
 
 function ToLogin() {
     const [identifier, setIdentifier] = useState("");
@@ -16,27 +18,11 @@ function ToLogin() {
     const handleLogin = async () => {
         try {
             const user = await login({ identifier, password });
-            Swal.fire({
-                customClass: {
-                    popup: 'custom-swal'
-                },
-                position: "top-end",
-                icon: "success",
-                title: "You have successfully logged in!",
-                showConfirmButton: false,
-                timer: 1500,
-            });
+            <IsTrue type="login" />
             navigate("/welcome");
             return user;
         } catch (error) {
-            Swal.fire({
-                customClass: {
-                    popup: 'custom-swal'
-                },
-                position: "center",
-                icon: "error",
-                text: "Login failed! Please check your credentials.",
-            });
+            <IsFalse type="login" />
             console.error("Login error:", error);
         }
     }
