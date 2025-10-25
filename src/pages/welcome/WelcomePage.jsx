@@ -1,5 +1,5 @@
 import "./WelcomePage.css"
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
 function WelcomePage() {
     return(
