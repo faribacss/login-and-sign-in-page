@@ -21,7 +21,7 @@ function showErrorAlert(type = "default") {
         icon: "error",
         title: titleMessage(),
         showConfirmButton: false,
-        timer: 1500,
+        timer: 2000,
     });
 }
 
