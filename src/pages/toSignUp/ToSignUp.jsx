@@ -5,7 +5,7 @@ import GoogleIcon from '@mui/icons-material/Google';
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Swal from "sweetalert2";
-import { registerUser } from "../../services/authentication";
+import { register } from "../../services/authentication";
 
 function ToSignUp() {
   const [userName, setUserName] = useState("");
@@ -16,7 +16,7 @@ function ToSignUp() {
 
   const handleRegister = async () => {
     try {
-      const user = await registerUser({
+      const user = await register({
         username: userName,
         email: email,
         password: password,

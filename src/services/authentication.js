@@ -4,7 +4,7 @@ const API_URL = "https://strapi.arvanschool.ir/api/";
 
 
 // Sign Up User
-export const registerUser = async (userData) => {
+export const register = async (userData) => {
     const { data } = await axios.post(`${API_URL}auth/local/register`, userData);
     localStorage.setItem("jwt", data.jwt);
     return data.user;
