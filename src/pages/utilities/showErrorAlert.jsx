@@ -1,6 +1,7 @@
 import Swal from "sweetalert2";
+import "AlertStyle.css";
 
-function IsFalse({ type = "default" }) {
+function showErrorAlert(type = "default") {
     const titleMessage = () => {
         switch (type) {
             case "login":
@@ -12,18 +13,16 @@ function IsFalse({ type = "default" }) {
         }
     };
     
-    return (
-        Swal.fire({
-            customClass: {
-                popup: 'custom-swal'
-            },
-            position: "top-end",
-            icon: "error",
-            title: titleMessage(),
-            showConfirmButton: false,
-            timer: 1500,
-        })
-    );
+    return Swal.fire({
+        customClass: {
+            popup: 'custom-swal'
+        },
+        position: "top-end",
+        icon: "error",
+        title: titleMessage(),
+        showConfirmButton: false,
+        timer: 1500,
+    });
 }
 
-export default IsFalse;
+export default showErrorAlert;

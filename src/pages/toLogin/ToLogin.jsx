@@ -6,8 +6,8 @@ import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import {login} from "../../services/authentication";
-import IsTrue from "../utilities/IsTrue";
-import IsFalse from "../utilities/IsFalse";
+import showSuccessAlert from "../utilities/showSuccessAlert";
+import showErrorAlert from "../utilities/showErrorAlert";
 
 function ToLogin() {
     const [identifier, setIdentifier] = useState("");
@@ -17,11 +17,11 @@ function ToLogin() {
     const handleLogin = async () => {
         try {
             const user = await login({ identifier, password });
-            IsTrue({ type: "login" });
+            showSuccessAlert("login");
             navigate("/welcome");
             return user;
         } catch (error) {
-            IsFalse({ type: "login" });
+            showErrorAlert("login");
             console.error("Login error:", error);
         }
     }

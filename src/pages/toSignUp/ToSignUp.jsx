@@ -5,8 +5,8 @@ import GoogleIcon from '@mui/icons-material/Google';
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { register } from "../../services/authentication";
-import IsTrue from "../utilities/IsTrue";
-import IsFalse from "../utilities/IsFalse";
+import showSuccessAlert from "../utilities/showSuccessAlert";
+import showErrorAlert from "../utilities/showErrorAlert";
 
 function ToSignUp() {
   const [userName, setUserName] = useState("");
@@ -22,11 +22,11 @@ function ToSignUp() {
         email: email,
         password: password,
       });
-      IsTrue({ type: "signUp" });
+      showSuccessAlert("signUp");
       navigate("/");
       return user;
     } catch (error) {
-      IsFalse({ type: "signUp" });
+      showErrorAlert("signUp");
       console.error("Registration error:", error);
     }
   }
