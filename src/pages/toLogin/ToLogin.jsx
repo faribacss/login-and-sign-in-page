@@ -2,20 +2,43 @@ import "./ToLogin.css"
 import { Box, Button, Checkbox, Chip, Link, FormControl, FormControlLabel, FormGroup, Grid, IconButton, InputAdornment, InputLabel, OutlinedInput, Stack, TextField, Typography } from "@mui/material";
 import AppleIcon from '@mui/icons-material/Apple';
 import GoogleIcon from '@mui/icons-material/Google';
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
-// import Swal from "sweetalert2";
+import Swal from "sweetalert2";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import {login} from "../../services/authentication";
 
 function ToLogin() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const handleLogin = async () => {
-        const user = await login({ identifier: email, password });
-        return user;
+        try {
+            const user = await login({ identifier: email, password });
+            Swal.fire({
+                customClass: {
+                    popup: 'custom-swal'
+                },
+                position: "top-end",
+                icon: "success",
+                title: "You have successfully logged in!",
+                showConfirmButton: false,
+                timer: 1500,
+            });
+            navigate("/welcome");
+            return user;
+        } catch (error) {
+            Swal.fire({
+                customClass: {
+                    popup: 'custom-swal'
+                },
+                position: "center",
+                icon: "error",
+                text: "Login failed! Please check your credentials.",
+            });
+            console.error("Login error:", error);
+        }
     }
 
     const [showPassword, setShowPassword] = React.useState(false);
@@ -24,32 +47,7 @@ function ToLogin() {
     event.preventDefault();};
     const handleMouseUpPassword = (event) => {
     event.preventDefault();};
-
-//     const submitHandler = () => {
-//     if (email === "demofariba@example.com" && password === "123456") {
-//       document.cookie = "email=demofariba@example.com; expires=Thu, 01 Jan 2026 00:00:00 UTC; path=/;";
-//       navigate("/welcome");
-//         Swal.fire({
-//           customClass: {
-//               popup: 'custom-swal'
-//           },
-//             position: "top-end",
-//             icon: "success",
-//             title: "You have successfully logged in!",
-//             showConfirmButton: false,
-//             timer: 1500,
-// });
-//     } else {
-//       Swal.fire({
-//         customClass: {
-//               popup: 'custom-swal'
-//           },
-//         position: "center",
-//         icon: "error",
-//         text: "Email or password is incorrect!",
-// });
-//     }
-//   };
+    
     return(
         <Grid container spacing={2} alignItems="center" justifyContent={{ xs: 'center' }}>
       <Grid item xs={12} md={6} margin='25px auto'>
@@ -83,13 +81,13 @@ function ToLogin() {
               />
             </Grid>
             <Grid item>
-              <FormControl fullWidth variant="outlined" color="success" className="forgotpass"
-                onChange={(e) => setPassword(e.target.value)}
-                >
+              <FormControl fullWidth variant="outlined" color="success" className="forgotpass">
                 <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
                 <OutlinedInput
                     id="outlined-adornment-password"
                     type={showPassword ? 'text' : 'password'}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     endAdornment={
                     <InputAdornment position="end">
                         <IconButton

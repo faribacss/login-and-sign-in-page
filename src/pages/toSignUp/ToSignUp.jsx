@@ -2,9 +2,9 @@ import { Box, Button, Checkbox, Chip, FormControlLabel, FormGroup, Grid, Stack, 
 import "./ToSignUp.css";
 import AppleIcon from '@mui/icons-material/Apple';
 import GoogleIcon from '@mui/icons-material/Google';
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-// import Swal from "sweetalert2";
+import Swal from "sweetalert2";
 import { registerUser } from "../../services/authentication";
 
 function ToSignUp() {
@@ -12,42 +12,39 @@ function ToSignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [checkPolicy, setCheckPolicy] = useState(false);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleRegister = async () => {
-    const user = await registerUser({
-      username: userName,
-      email: email,
-      password: password,
-    });
-    return user; 
+    try {
+      const user = await registerUser({
+        username: userName,
+        email: email,
+        password: password,
+      });
+      Swal.fire({
+        customClass: {
+          popup: 'custom-swal'
+        },
+        position: "center",
+        icon: "success",
+        title: "You have successfully signed up!",
+        showConfirmButton: false,
+        timer: 1800,
+      });
+      navigate("/");
+      return user;
+    } catch (error) {
+      Swal.fire({
+        customClass: {
+          popup: 'custom-swal'
+        },
+        position: "center",
+        icon: "error",
+        text: "Sign up failed! Please check your information.",
+      });
+      console.error("Registration error:", error);
+    }
   }
-  // const signInButton = () =>{
-  //   if(userName === 'demofariba' && password === '123456' && email === 'demofariba@example.com'){
-  //     Swal.fire({
-  //       customClass: {
-  //         popup: 'custom-swal'
-  //       },
-  //       position: "center",
-  //       icon: "success",
-  //       title: "You have successfully signed up!",
-  //       showConfirmButton: false,
-  //       timer: 1800,
-  //     });
-  //     navigate("/");
-  //   }
-  //   else{
-  //     Swal.fire({
-  //       customClass: {
-  //         popup: 'custom-swal'
-  //       },
-  //       position: "center",
-  //       icon: "error",
-  //       text: "Sign up failed! Please check your information.",
-  //     });
-  //   }
-  // }
-
   const handlePolicyChange = (e) => {
     if(e.target.checked){
       setCheckPolicy(true);
