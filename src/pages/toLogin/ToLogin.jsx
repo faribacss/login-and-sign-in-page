@@ -4,7 +4,6 @@ import AppleIcon from '@mui/icons-material/Apple';
 import GoogleIcon from '@mui/icons-material/Google';
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
-import Swal from "sweetalert2";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import {login} from "../../services/authentication";
 import IsTrue from "../utilities/IsTrue";
@@ -18,11 +17,11 @@ function ToLogin() {
     const handleLogin = async () => {
         try {
             const user = await login({ identifier, password });
-            <IsTrue type="login" />
+            IsTrue({ type: "login" });
             navigate("/welcome");
             return user;
         } catch (error) {
-            <IsFalse type="login" />
+            IsFalse({ type: "login" });
             console.error("Login error:", error);
         }
     }
