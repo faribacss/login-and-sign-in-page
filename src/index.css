@@ -2,3 +2,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Chango&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Yellowtail&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Chango&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Yellowtail&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap');
+
+
+
+/* Custom SweetAlert Font */
+.custom-swal {
+    font-family: "Geologica", sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 12px !important;
+}
+
