@@ -16,7 +16,7 @@ function ToSignUp() {
 
   const handleRegister = async () => {
     try {
-      const user = await register({
+      const registeredUser = await register({
         username: userName,
         email: email,
         password: password,
@@ -32,7 +32,7 @@ function ToSignUp() {
         timer: 1800,
       });
       navigate("/");
-      return user;
+      return registeredUser;
     } catch (error) {
       Swal.fire({
         customClass: {
