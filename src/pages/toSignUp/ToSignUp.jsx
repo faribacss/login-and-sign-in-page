@@ -7,7 +7,7 @@ import { useState } from "react";
 import { register } from "../../services/authentication";
 import showSuccessAlert from "../utilities/showSuccessAlert";
 import showErrorAlert from "../utilities/showErrorAlert";
-import styles from "./ToSignUp.module.css";
+import styles from "../../styles/ToSignUp.module.css";
 
 function ToSignUp() {
   const [userName, setUserName] = useState("");
@@ -127,7 +127,7 @@ function ToSignUp() {
               >
                 <Chip 
                   className="connections" 
-                  icon={<GoogleIcon color="primary" />} 
+                  icon={<GoogleIcon className="auth-google-icon" />} 
                   label="Sign in with Google" 
                 />
                 <Chip 

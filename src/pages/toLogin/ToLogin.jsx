@@ -8,7 +8,7 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import {login} from "../../services/authentication";
 import showSuccessAlert from "../utilities/showSuccessAlert";
 import showErrorAlert from "../utilities/showErrorAlert";
-import styles from "./ToLogin.module.css";
+import styles from "../../styles/ToLogin.module.css";
 
 function ToLogin() {
     const [identifier, setIdentifier] = useState("");
@@ -120,7 +120,7 @@ function ToLogin() {
               >
                 <Chip 
                   className="connections" 
-                  icon={<GoogleIcon color="primary" />} 
+                  icon={<GoogleIcon className="auth-google-icon" />} 
                   label="Sign in with Google" 
                 />
                 <Chip 
