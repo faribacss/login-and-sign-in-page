@@ -1,5 +1,5 @@
 import "../../index.css";
-import { Box, Button, Checkbox, FormControlLabel, FormGroup, Grid, TextField, Typography } from "@mui/material";
+import { Box, Button, Checkbox, FormControl, FormControlLabel, FormGroup, Grid, InputLabel, OutlinedInput, TextField, Typography } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { register } from "../../services/authentication";
@@ -82,21 +82,22 @@ function ToSignUp() {
               />
             </Grid>
             <Grid item>
-              <TextField
-                required
-                fullWidth 
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                label="Password" 
-                type={showPassword ? "text" : "password"}
-                className="auth-text-field"
-                variant="outlined"
-                color="success"
-              />
-              <ShowPassword 
-                showPassword={showPassword} 
-                onToggle={() => setShowPassword(!showPassword)} 
-              />
+              <FormControl fullWidth variant="outlined" color="success" className="forgotpass">
+                <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                <OutlinedInput
+                    id="outlined-adornment-password"
+                    type={showPassword ? 'text' : 'password'}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    endAdornment={
+                    <ShowPassword 
+                        showPassword={showPassword} 
+                        onToggle={() => setShowPassword(!showPassword)} 
+                    />
+                    }
+                    label="Password"
+                />
+                </FormControl>
             </Grid>
             
             <Grid item>
