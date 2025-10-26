@@ -1,5 +1,5 @@
 import React from "react";
-import "../../index.css";
+import "../index.css";
 import { Chip, Stack } from "@mui/material";
 import AppleIcon from '@mui/icons-material/Apple';
 import GoogleIcon from '@mui/icons-material/Google';
