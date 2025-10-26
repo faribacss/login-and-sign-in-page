@@ -1,4 +1,4 @@
-import "./ToLogin.css"
+import "../../index.css";
 import { Box, Button, Checkbox, Chip, FormControl, FormControlLabel, FormGroup, Grid, IconButton, InputAdornment, InputLabel, OutlinedInput, Stack, TextField, Typography } from "@mui/material";
 import AppleIcon from '@mui/icons-material/Apple';
 import GoogleIcon from '@mui/icons-material/Google';
@@ -8,6 +8,7 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import {login} from "../../services/authentication";
 import showSuccessAlert from "../utilities/showSuccessAlert";
 import showErrorAlert from "../utilities/showErrorAlert";
+import styles from "./ToLogin.module.css";
 
 function ToLogin() {
     const [identifier, setIdentifier] = useState("");
@@ -35,22 +36,16 @@ function ToLogin() {
 
     return(
         <Grid container spacing={2} alignItems="center" justifyContent={{ xs: 'center' }}>
-      <Grid item xs={12} md={6} margin='25px auto'>
+      <Grid item xs={12} md={6} className={styles.container}>
         <Box component="section">
           <Typography 
             variant="h2" 
             gutterBottom
-            sx={{
-              fontFamily: "Poppins",
-              fontWeight: 800,
-              fontSize: "30px",
-              letterSpacing: "0.01em",
-              gap: "10px",
-            }}
+            className="auth-title"
           >
             Welcome back!
           </Typography>
-            <Typography variant="subtitle2" sx={{ marginBottom: '55px', fontWeight: 400, fontSize: "16px",}}>
+            <Typography variant="subtitle2" className={styles.subtitle}>
                 Enter your Credentials to access your account
             </Typography>
           
@@ -60,7 +55,7 @@ function ToLogin() {
                 onChange={(e) => setIdentifier(e.target.value)}
                 fullWidth
                 label="Email"
-                sx={{ width: "404px", height: "58px" }}
+                className="auth-text-field"
                 variant="outlined"
                 color="success"
               />
@@ -105,25 +100,14 @@ function ToLogin() {
               <Button 
                 variant="contained"
                 onClick={handleLogin} 
-                sx={{
-                  width: "404px",
-                  height: "48px",
-                  padding: "10px",
-                  borderRadius: "10px",
-                  color: "#FFFFFF",
-                  backgroundColor: "#3A5B22",
-                  border: "1px solid #3A5B22",
-                  '&:hover': {
-                    backgroundColor: "#2d4619"
-                  }
-                }}
+                className="auth-button-base auth-primary-button"
               >
                 Login
               </Button>
             </Grid>
             
             <Grid item>
-              <Typography variant="body2" sx={{ mt: 2, textAlign: "center" }}>
+              <Typography variant="body2" className="auth-or-text">
                 Or
               </Typography>
             </Grid>
@@ -132,11 +116,7 @@ function ToLogin() {
               <Stack 
                 direction="row" 
                 spacing={2} 
-                sx={{
-                  width: "100%", 
-                  mt: 2, 
-                  justifyContent: "center"
-                }}
+                className="auth-connections-stack"
               >
                 <Chip 
                   className="connections" 
@@ -145,14 +125,14 @@ function ToLogin() {
                 />
                 <Chip 
                   className="connections" 
-                  icon={<AppleIcon sx={{ color: "#000000" }} />} 
+                  icon={<AppleIcon className="auth-apple-icon" />} 
                   label="Sign in with Apple" 
                 />
               </Stack>
             </Grid>
           </Grid>
-          <Typography sx={{ mt: 3, textAlign: "center",}}>
-            Don’t have an account? <Link to="/signup" style={{ textDecoration: 'none' }}>Sign Up</Link>
+          <Typography className="auth-bottom-text">
+            Don't have an account? <Link to="/signup" className="auth-link">Sign Up</Link>
           </Typography>
         </Box>
       </Grid>
@@ -160,13 +140,7 @@ function ToLogin() {
       <Grid item xs={12} md={6}>
         <Box
           component="img"
-          sx={{
-            width: "781.5px",
-            height: "auto",
-            borderTopLeftRadius: "45px",
-            borderBottomLeftRadius: "45px",
-            maxWidth: { xs: '100%', md: 'auto' }
-          }}
+          className="auth-image-box"
           alt="Login Illustration"
           src="img/1.jpg"
         />

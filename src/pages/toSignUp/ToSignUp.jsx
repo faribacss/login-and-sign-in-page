@@ -1,4 +1,4 @@
-import "./ToSignUp.css";
+import "../../index.css";
 import { Box, Button, Checkbox, Chip, FormControlLabel, FormGroup, Grid, Stack, TextField, Typography } from "@mui/material";
 import AppleIcon from '@mui/icons-material/Apple';
 import GoogleIcon from '@mui/icons-material/Google';
@@ -7,6 +7,7 @@ import { useState } from "react";
 import { register } from "../../services/authentication";
 import showSuccessAlert from "../utilities/showSuccessAlert";
 import showErrorAlert from "../utilities/showErrorAlert";
+import styles from "./ToSignUp.module.css";
 
 function ToSignUp() {
   const [userName, setUserName] = useState("");
@@ -40,20 +41,13 @@ function ToSignUp() {
   }
   return (
     <Grid container spacing={2} alignItems="center" justifyContent={{ xs: 'center', md: 'center' }}>
-      <Grid item xs={12} md={6} margin='0 auto'>
+      <Grid item xs={12} md={6} className={styles.container}>
         <Box component="section">
           <Typography 
             component="h4" 
             variant="h4" 
             gutterBottom
-            sx={{
-              fontFamily: "Poppins",
-              fontWeight: 800,
-              fontSize: "30px",
-              letterSpacing: "0.01em",
-              gap: "10px",
-              margin: '35px 0',
-            }}
+            className={`auth-title ${styles.title}`}
           >
             Get Started Now
           </Typography>
@@ -67,7 +61,7 @@ function ToSignUp() {
                 onChange={(e) => setUserName(e.target.value)}
                 label="UserName" 
                 type="text"
-                sx={{width: "404px", height: "58px",}} 
+                className="auth-text-field"
                 variant="outlined"
                 color="success"
               />
@@ -80,7 +74,7 @@ function ToSignUp() {
                 onChange={(e) => setEmail(e.target.value)}
                 type="email"
                 label="Email" 
-                sx={{width: "404px", height: "58px"}} 
+                className="auth-text-field"
                 variant="outlined" 
                 color="success"
               />
@@ -93,7 +87,7 @@ function ToSignUp() {
                 onChange={(e) => setPassword(e.target.value)}
                 label="Password" 
                 type="password"
-                sx={{width: "404px", height: "58px"}}
+                className="auth-text-field"
                 variant="outlined"
                 color="success"
               />
@@ -113,29 +107,14 @@ function ToSignUp() {
                 onClick={handleRegister}
                 variant="contained"
                 disabled={!checkPolicy}
-                sx={{
-                  width: "404px",
-                  height: "48px",
-                  padding: "10px",
-                  borderRadius: "10px",
-                  color: "#FFFFFF",
-                  backgroundColor: checkPolicy ? "#3A5B22" : "#cccccc",
-                  border: `1px solid ${checkPolicy ? "#3A5B22" : "#cccccc"}`,
-                  '&:hover': {
-                    backgroundColor: checkPolicy ? "#2d4619" : "#cccccc"
-                  },
-                  '&:disabled': {
-                    color: "#666666",
-                    backgroundColor: "#cccccc"
-                  }
-                }}
+                className={`auth-button-base ${checkPolicy ? 'auth-primary-button' : 'auth-disabled-button'}`}
               >
                 Sign up
               </Button>
             </Grid>
             
             <Grid item>
-              <Typography variant="body2" sx={{ mt: 2, textAlign: "center" }}>
+              <Typography variant="body2" className="auth-or-text">
                 Or
               </Typography>
             </Grid>
@@ -144,11 +123,7 @@ function ToSignUp() {
               <Stack 
                 direction="row" 
                 spacing={2} 
-                sx={{
-                  width: "100%", 
-                  mt: 2, 
-                  justifyContent: "center"
-                }}
+                className="auth-connections-stack"
               >
                 <Chip 
                   className="connections" 
@@ -157,14 +132,14 @@ function ToSignUp() {
                 />
                 <Chip 
                   className="connections" 
-                  icon={<AppleIcon sx={{ color: "#000000" }} />} 
+                  icon={<AppleIcon className="auth-apple-icon" />} 
                   label="Sign in with Apple" 
                 />
               </Stack>
             </Grid>
           </Grid>
-          <Typography sx={{ mt: 3, textAlign: "center",}}>
-            Have an account?  <Link to="/" style={{ textDecoration: 'none' }}>Sign In</Link>
+          <Typography className="auth-bottom-text">
+            Have an account?  <Link to="/" className="auth-link">Sign In</Link>
           </Typography>
         </Box>
       </Grid>
@@ -172,13 +147,7 @@ function ToSignUp() {
       <Grid item xs={12} md={6}>
         <Box
           component="img"
-          sx={{
-            width: "781.5px",
-            height: "auto",
-            borderTopLeftRadius: "45px",
-            borderBottomLeftRadius: "45px",
-            maxWidth: { xs: '100%', md: 'auto' }
-          }}
+          className="auth-image-box"
           alt="Login Illustration"
           src="img/1.jpg"
         />
