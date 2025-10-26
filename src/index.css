@@ -8,12 +8,6 @@
     font-family: "Geologica";
     src: url('../public/fonts/Geologica.ttf') format('truetype');
 }
-
-@font-face {
-    font-family: "Chango";
-    src: url('../public/fonts/Chango-Regular.ttf') format('truetype');
-}
-
 @font-face {
     font-family: "JosefinSans";
     src: url('../public/fonts/JosefinSans.ttf') format('truetype');
@@ -38,7 +32,7 @@
 }
 
 .auth-title {
-    font-family: "Poppins";
+    font-family: "Geologica";
     font-weight: 800;
     font-size: 30px;
     letter-spacing: 0.01em;
