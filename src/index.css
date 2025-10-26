@@ -93,3 +93,12 @@
         max-width: 100%;
     }
 }
+
+/* Social Login Icons */
+.google-icon {
+    color: #4285F4 !important;
+}
+
+.apple-icon {
+    color: #000000 !important;
+}

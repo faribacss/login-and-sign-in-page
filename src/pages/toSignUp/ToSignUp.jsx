@@ -127,12 +127,12 @@ function ToSignUp() {
               >
                 <Chip 
                   className="connections" 
-                  icon={<GoogleIcon className="auth-google-icon" />} 
+                  icon={<GoogleIcon className="google-icon" />} 
                   label="Sign in with Google" 
                 />
                 <Chip 
                   className="connections" 
-                  icon={<AppleIcon className="auth-apple-icon" />} 
+                  icon={<AppleIcon className="apple-icon" />} 
                   label="Sign in with Apple" 
                 />
               </Stack>

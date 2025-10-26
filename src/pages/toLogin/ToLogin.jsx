@@ -120,12 +120,12 @@ function ToLogin() {
               >
                 <Chip 
                   className="connections" 
-                  icon={<GoogleIcon color="#4285F4" />} 
+                  icon={<GoogleIcon className="google-icon" />} 
                   label="Sign in with Google" 
                 />
                 <Chip 
                   className="connections" 
-                  icon={<AppleIcon color="#000000" />} 
+                  icon={<AppleIcon className="apple-icon" />} 
                   label="Sign in with Apple" 
                 />
               </Stack>
