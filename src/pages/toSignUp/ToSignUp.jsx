@@ -85,6 +85,7 @@ function ToSignUp() {
               <FormControl fullWidth variant="outlined" color="success" className="forgotpass">
                 <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
                 <OutlinedInput
+                    required
                     id="outlined-adornment-password"
                     type={showPassword ? 'text' : 'password'}
                     value={password}
