@@ -1,18 +1,18 @@
 import "../../index.css";
-import { Box, Button, Checkbox, Chip, FormControl, FormControlLabel, FormGroup, Grid, IconButton, InputAdornment, InputLabel, OutlinedInput, Stack, TextField, Typography } from "@mui/material";
-import AppleIcon from '@mui/icons-material/Apple';
-import GoogleIcon from '@mui/icons-material/Google';
+import { Button, Checkbox, FormControlLabel, FormGroup, Grid, TextField, Typography } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
-import { Visibility, VisibilityOff } from "@mui/icons-material";
 import {login} from "../../services/authentication";
 import showSuccessAlert from "../utilities/showSuccessAlert";
 import showErrorAlert from "../utilities/showErrorAlert";
 import styles from "../../styles/ToLogin.module.css";
+import SocialLoginButtons from "../../component/SocialLoginButtons";
+import ShowPassword from "../../component/ShowPassword";
 
 function ToLogin() {
     const [identifier, setIdentifier] = useState("");
     const [password, setPassword] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
 
     const handleLogin = async () => {
@@ -26,13 +26,6 @@ function ToLogin() {
             console.error("Login error:", error);
         }
     }
-
-    const [showPassword, setShowPassword] = React.useState(false);
-    const handleClickShowPassword = () => setShowPassword((show) => !show);
-    const handleMouseDownPassword = (event) => {
-    event.preventDefault();};
-    const handleMouseUpPassword = (event) => {
-    event.preventDefault();};
 
     return(
         <Grid container spacing={2} alignItems="center" justifyContent={{ xs: 'center' }}>
@@ -69,19 +62,10 @@ function ToLogin() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     endAdornment={
-                    <InputAdornment position="end">
-                        <IconButton
-                        aria-label={
-                            showPassword ? 'hide the password' : 'display the password'
-                        }
-                        onClick={handleClickShowPassword}
-                        onMouseDown={handleMouseDownPassword}
-                        onMouseUp={handleMouseUpPassword}
-                        edge="end"
-                        >
-                        {showPassword ? <VisibilityOff /> : <Visibility />}
-                        </IconButton>
-                    </InputAdornment>
+                    <ShowPassword 
+                        showPassword={showPassword} 
+                        onToggle={() => setShowPassword(!showPassword)} 
+                    />
                     }
                     label="Password"
                 />
@@ -113,22 +97,7 @@ function ToLogin() {
             </Grid>
             
             <Grid item>
-              <Stack 
-                direction="row" 
-                spacing={2} 
-                className="auth-connections-stack"
-              >
-                <Chip 
-                  className="connections" 
-                  icon={<GoogleIcon className="google-icon" />} 
-                  label="Sign in with Google" 
-                />
-                <Chip 
-                  className="connections" 
-                  icon={<AppleIcon className="apple-icon" />} 
-                  label="Sign in with Apple" 
-                />
-              </Stack>
+              <SocialLoginButtons/>
             </Grid>
           </Grid>
           <Typography className="auth-bottom-text">

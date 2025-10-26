@@ -8,11 +8,15 @@ import { register } from "../../services/authentication";
 import showSuccessAlert from "../utilities/showSuccessAlert";
 import showErrorAlert from "../utilities/showErrorAlert";
 import styles from "../../styles/ToSignUp.module.css";
+import ShowPassword from "../../component/ShowPassword";
+import SocialLoginButtons from "../../component/SocialLoginButtons";
+
 
 function ToSignUp() {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [checkPolicy, setCheckPolicy] = useState(false);
   const navigate = useNavigate();
 
@@ -86,10 +90,14 @@ function ToSignUp() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 label="Password" 
-                type="password"
+                type={showPassword ? "text" : "password"}
                 className="auth-text-field"
                 variant="outlined"
                 color="success"
+              />
+              <ShowPassword 
+                showPassword={showPassword} 
+                onToggle={() => setShowPassword(!showPassword)} 
               />
             </Grid>
             
@@ -120,22 +128,7 @@ function ToSignUp() {
             </Grid>
             
             <Grid item>
-              <Stack 
-                direction="row" 
-                spacing={2} 
-                className="auth-connections-stack"
-              >
-                <Chip 
-                  className="connections" 
-                  icon={<GoogleIcon className="google-icon" />} 
-                  label="Sign in with Google" 
-                />
-                <Chip 
-                  className="connections" 
-                  icon={<AppleIcon className="apple-icon" />} 
-                  label="Sign in with Apple" 
-                />
-              </Stack>
+              <SocialLoginButtons/>
             </Grid>
           </Grid>
           <Typography className="auth-bottom-text">
