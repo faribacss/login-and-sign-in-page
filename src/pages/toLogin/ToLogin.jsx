@@ -3,8 +3,8 @@ import { Box, Button, Checkbox, FormControl, FormControlLabel, FormGroup, Grid, 
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import {login} from "../../services/authentication";
-import showSuccessAlert from "../utilities/showSuccessAlert";
-import showErrorAlert from "../utilities/showErrorAlert";
+import showSuccessAlert from "../../utilities/showSuccessAlert";
+import showErrorAlert from "../../utilities/showErrorAlert";
 import styles from "../../styles/ToLogin.module.css";
 import SocialLoginButtons from "../../component/SocialLoginButtons";
 import ShowPassword from "../../component/ShowPassword";
