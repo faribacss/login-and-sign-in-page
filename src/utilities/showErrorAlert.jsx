@@ -1,5 +1,5 @@
+// SweetAlert2 for displaying error alerts
 import Swal from "sweetalert2";
-import "../index.css";
 
 function showErrorAlert(type = "default") {
     const titleMessage = () => {
@@ -12,7 +12,6 @@ function showErrorAlert(type = "default") {
                 return "Error!";
         }
     };
-    
     return Swal.fire({
         customClass: {
             popup: 'custom-swal'

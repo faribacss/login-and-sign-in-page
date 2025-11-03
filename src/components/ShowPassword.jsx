@@ -1,5 +1,10 @@
+// Library
 import React from "react";
+
+// MUI Icons
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+
+// MUI Components
 import { InputAdornment, IconButton } from "@mui/material";
 
 function ShowPassword({ showPassword, onToggle }) {

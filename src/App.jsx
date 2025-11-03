@@ -1,8 +1,11 @@
-import * as React from 'react';
+// React Router imports for routing
 import { Route, Routes } from 'react-router-dom';
-import ToLogin from './pages/toLogin/ToLogin';
-import ToSignUp from './pages/toSignUp/ToSignUp';
-import WelcomePage from './pages/welcome/WelcomePage';
+
+// Page component imports
+import ToLogin from '@/pages/toLogin/ToLogin';
+import ToSignUp from '@/pages/toSignUp/ToSignUp';
+import WelcomePage from '@/pages/welcome/WelcomePage';
+
 
 export default function App() {
   return (

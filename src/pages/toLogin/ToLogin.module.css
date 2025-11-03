@@ -2,13 +2,11 @@
 .container {
   margin: 25px auto;
 }
-
 .subtitle {
   margin-bottom: 55px;
   font-weight: 400;
   font-size: 16px;
 }
-
 .forgotpass{
     position: relative;
 }

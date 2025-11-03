@@ -1,19 +1,19 @@
 /* fonts */
 @font-face {
     font-family: "BricolageBold";
-    src: url('../public/fonts/BricolageBold.ttf') format('truetype');
+    src: url('@/fonts/BricolageBold.ttf') format('truetype');
 }
 @font-face {
     font-family: "Geologica";
-    src: url('../public/fonts/Geologica.ttf') format('truetype');
+    src: url('@/fonts/Geologica.ttf') format('truetype');
 }
 @font-face {
     font-family: "Chango";
-    src: url('../public/fonts/Chango.ttf') format('truetype');
+    src: url('@/fonts/Chango.ttf') format('truetype');
 }
 @font-face {
     font-family: "JosefinSans";
-    src: url('../public/fonts/JosefinSans.ttf') format('truetype');
+    src: url('@/fonts/JosefinSans.ttf') format('truetype');
 }
 
 
@@ -45,8 +45,11 @@
 .auth-text-field {
     width: 404px;
     height: 58px;
+    margin: 5px 0px;
 }
-
+.auth-checkBox{
+    margin: 18px 0;
+}
 .auth-button-base {
     width: 404px;
     height: 48px;

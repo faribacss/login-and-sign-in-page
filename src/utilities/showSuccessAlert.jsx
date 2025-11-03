@@ -1,5 +1,5 @@
+// SweetAlert2 for displaying success alerts
 import Swal from "sweetalert2";
-import "../index.css";
 
 function showSuccessAlert(type = "default") {
     const titleMessage = () => {
@@ -12,7 +12,6 @@ function showSuccessAlert(type = "default") {
                 return "Success!";
         }
     };
-    
     return Swal.fire({
         customClass: {
             popup: 'custom-swal'

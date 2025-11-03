@@ -1,18 +1,30 @@
-import "./WelcomePage.css"
+// CSS Module Styles
+import styles from "@/pages/welcome/WelcomePage.module.css";
+
+// React Router Components
 import { Link } from "react-router-dom";
 
 function WelcomePage() {
-    return(
-        <div className="welcome-container">
-            <div className="welcome">
-                <h1 className="welcome-message animate__animated animate__tada">Hello</h1>
-                <p className="welcome-title animate__animated animate__shakeX">Welcome! It's Nice To See You Here</p>
-                <button className="welcome-button animate__animated animate__fadeInUp animate__delay-2s">
-                    <Link to="/" className="welcome-link">Go to Login</Link>
-                </button>
-            </div>
+  return (
+    <div className={styles.welcomeContainer}>
+      <div className={styles.welcome}>
+        <h1
+          className={`${styles.welcomeMessage} animate__animated animate__tada animate__slower`}>
+          Hello
+        </h1>
+        <p
+          className={`${styles.welcomeTitle} animate__animated animate__shakeX animate__delay-1s`}>
+          Welcome! It's Nice To See You Here
+        </p>
+        <div className="animate__animated animate__fadeInUp animate__delay-2s animate__slow">
+          <button className={styles.welcomeButton}>
+            <Link to="/" className={styles.welcomeLink}>
+              Back to Login
+            </Link>
+          </button>
         </div>
-    )
+      </div>
+    </div>
+  );
 }
-
 export default WelcomePage;
