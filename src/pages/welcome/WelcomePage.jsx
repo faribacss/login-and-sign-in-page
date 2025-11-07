@@ -11,6 +11,7 @@ function WelcomePage() {
   const { user } = useContext(SaveInfoContext);
   const [logoutUser, setLogoutUser] = useState(SaveInfoContext);
 
+  // Logout 
   const handleLogout = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("jwt");
