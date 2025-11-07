@@ -14,10 +14,10 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 
 // React Hooks
-import { useState } from "react";
+import { useState, useContext } from "react";
 
-// Services
-import { registerUser } from "@/services/authentication";
+// Context
+import { SaveInfoContext } from "@/components/SaveInfo";
 
 // Utilities (Alert)
 import showErrorAlert from "@/utilities/showErrorAlert";
@@ -75,6 +75,7 @@ function ToSignUp() {
     formState: { errors, isSubmitting },
   } = useForm({ resolver: yupResolver(signUpSchema), mode: "onBlur" });
 
+  const { register: registerUser } = useContext(SaveInfoContext);
   const [showPassword, setShowPassword] = useState(false);
   const [checkPolicy, setCheckPolicy] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);

@@ -16,10 +16,10 @@
   height: 100vh;
 }
 .welcomeMessage {
-  font-size: 148px;
+  font-size: 100px;
   font-family: "Chango";
   color: #000000;
-  filter: drop-shadow(5px 5px 4px #f3f02f);
+  filter: drop-shadow(4px 4px 4px #0c3c85);
   margin: 0;
 }
 .welcomeTitle {
@@ -28,6 +28,13 @@
   color: #ffffff;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
   margin: 0;
+}
+.username{
+  color: #000000;
+  filter: drop-shadow(4px 4px 4px #0c3c85);
+  font-size: 80px;
+  font-family: "Chango";
+  margin-bottom: 25px;
 }
 .welcomeButton {
   all: unset;

@@ -16,7 +16,7 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 
 // React Hooks
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 // React Router Components
 import { Link, useNavigate } from "react-router-dom";
@@ -27,8 +27,8 @@ import styles from "@/pages/toLogin/ToLogin.module.css";
 // ShowPassword Component
 import ShowPassword from "@/components/ShowPassword";
 
-// Services
-import { login } from "@/services/authentication";
+// Context
+import { SaveInfoContext } from "@/components/SaveInfo";
 
 // Social Buttons Component
 // import SocialLoginButtons from "component/SocialLoginButtons";
@@ -64,6 +64,7 @@ function ToLogin() {
     mode: "onBlur",
   });
 
+  const { loginUser } = useContext(SaveInfoContext);
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -71,7 +72,7 @@ function ToLogin() {
 
   const handleLogin = async (data) => {
     try {
-      const user = await login({
+      const user = await loginUser({
         identifier: data.identifier,
         password: data.password,
       });
@@ -111,7 +112,7 @@ function ToLogin() {
                   fullWidth
                   type="email"
                   {...register("identifier")}
-                  label="Email"
+                  label="Enter your email"
                   className="auth-text-field"
                   variant="outlined"
                   color="success"

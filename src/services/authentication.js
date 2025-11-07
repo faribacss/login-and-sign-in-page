@@ -1,33 +1,26 @@
-// Axios library
+// axios 
 import axios from "axios";
 
-// API base URL
+// API URL
 const API_URL = "https://strapi.arvanschool.ir/api/";
 
-// SignUp User
-export const registerUser = async (userData, saveUserData = null) => {
-  const { data } = await axios.post(`${API_URL}auth/local/register`, userData);
+// Save user and jwt to local storage
+const saveToStorage = (user, jwt, callback) => {
+  localStorage.setItem("jwt", jwt);
+  localStorage.setItem("user", JSON.stringify(user));
+  if (callback) callback(user, jwt);
+};
 
-  // save to localStorage for Registration
-  localStorage.setItem("jwt", data.jwt);
-  localStorage.setItem("user", JSON.stringify(data.user));
-  if (saveUserData) {
-    saveUserData(data.user, data.jwt);
-  }
+// Sign Up
+export const registerUser = async (userData, saveUserData) => {
+  const { data } = await axios.post(`${API_URL}auth/local/register`, userData);
+  saveToStorage(data.user, data.jwt, saveUserData);
   return data.user;
 };
 
-// Login User
-export const login = async (credentials, saveUserData = null) => {
+// Login
+export const login = async (credentials, saveUserData) => {
   const { data } = await axios.post(`${API_URL}auth/local`, credentials);
-
-  // save to localStorage for login
-  localStorage.setItem("jwt", data.jwt);
-  localStorage.setItem("user", JSON.stringify(data.user));
-
-  if (saveUserData) {
-    saveUserData(data.user, data.jwt);
-  }
-
+  saveToStorage(data.user, data.jwt, saveUserData);
   return data.user;
 };
