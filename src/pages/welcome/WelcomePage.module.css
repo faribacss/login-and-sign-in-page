@@ -37,7 +37,7 @@
   margin: 0;
 }
 
-.welcomeLink {
+.logoutLink {
   all: unset;
   background-color: #0a1629;
   padding: 10px 25px;
@@ -49,8 +49,16 @@
   color: #ffffff;
   font-family: "Geologica";
 }
-.welcomeLink:hover {
+.logoutLink:hover {
   background-color: #0a1629dc;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+[dir="rtl"] .logoutLink {
+  font-family: "Yekan", sans-serif;
+}
+[dir="rtl"] .welcomeTitle,
+[dir="rtl"] .welcomeMessage {
+  font-family: "Lalezar", sans-serif;
 }

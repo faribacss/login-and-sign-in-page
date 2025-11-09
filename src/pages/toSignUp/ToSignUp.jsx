@@ -1,5 +1,6 @@
 // Library
 import { useState, useContext } from "react";
+import { useTranslation } from "react-i18next";
 
 // Context
 import { SaveInfoContext } from "@/context/SaveInfo.jsx";
@@ -27,14 +28,12 @@ import showSuccessAlert from "@/utilities/showSuccessAlert";
 import styles from "@/pages/toSignUp/ToSignUp.module.css";
 
 // React Hook Form
-import { DevTool } from "@hookform/devtools";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 
 // image
 import loginImage from "@/assets/public/img/1.jpg";
-import { useTranslation } from "react-i18next";
 
 // Validation Schema
 export const signUpSchema = yup.object().shape({
@@ -66,7 +65,6 @@ function ToSignUp() {
   const isRtl = i18n?.language?.startsWith("fa");
   const {
     register,
-    control,
     reset,
     handleSubmit,
     formState: { errors, isSubmitting },
@@ -274,7 +272,6 @@ function ToSignUp() {
           src={loginImage}
         />
       </Grid>
-      <DevTool control={control} />
     </Grid>
   );
 }

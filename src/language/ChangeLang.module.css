@@ -13,7 +13,6 @@
 
 .langButton {
   all: unset;
-  font-family: "Geologica";
   cursor: pointer;
 }
 .langDropdown {
@@ -23,6 +22,7 @@
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   padding: 5px;
+  text-align: center;
 }
 .langList {
   list-style-type: none;

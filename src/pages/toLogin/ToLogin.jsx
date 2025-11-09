@@ -1,5 +1,6 @@
 // Library
 import { useState, useContext } from "react";
+import { useTranslation } from "react-i18next";
 
 // Context
 import { SaveInfoContext } from "@/context/SaveInfo.jsx";
@@ -30,8 +31,6 @@ import styles from "@/pages/toLogin/ToLogin.module.css";
 // Utilities (Alert)
 import showErrorAlert from "@/utilities/showErrorAlert";
 import showSuccessAlert from "@/utilities/showSuccessAlert";
-import { DevTool } from "@hookform/devtools";
-import { useTranslation } from "react-i18next";
 
 // image
 import loginImage from "@/assets/public/img/1.jpg";
@@ -53,7 +52,6 @@ function ToLogin() {
   const isRtl = i18n?.language?.startsWith("fa");
   const {
     register,
-    control,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm({
@@ -219,7 +217,6 @@ function ToLogin() {
           src={loginImage}
         />
       </Grid>
-      <DevTool control={control} />
     </Grid>
   );
 }

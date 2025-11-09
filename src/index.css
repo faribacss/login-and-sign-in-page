@@ -18,13 +18,11 @@
 /* fa fonts */
 @font-face {
   font-family: "VazirBold";
-  src: url("@/assets/public/fonts/VazirBold.woff2") format("woff2"),
-    url("@/assets/public/fonts/VazirBold.woff") format("woff");
+  src: url("@/assets/public/fonts/VazirBold.woff2") format("woff2");
 }
 @font-face {
   font-family: "VazirMedium";
-  src: url("@/assets/public/fonts/VazirMedium.woff2") format("woff2"),
-    url("@/assets/public/fonts/VazirMedium.woff") format("woff");
+  src: url("@/assets/public/fonts/VazirMedium.woff2") format("woff2");
 }
 @font-face {
   font-family: "Lalezar";
@@ -141,10 +139,6 @@
 }
 
 /* Apply Persian fonts automatically when document direction is RTL */
-[dir="rtl"] body {
-  font-family: 'Yekan', 'VazirMedium', sans-serif;
-}
-
 [dir="rtl"] h1,
 [dir="rtl"] h2,
 [dir="rtl"] h3,
@@ -153,15 +147,13 @@
 [dir="rtl"] h6,
 [dir="rtl"] p,
 [dir="rtl"] span,
-[dir="rtl"] bottom,
+[dir="rtl"] .auth-primary-button,
+[dir="rtl"] input::placeholder,
 [dir="rtl"] .auth-title {
-  font-family: 'Yekan', 'Lalezar', sans-serif;
-}
-[dir="rtl"] .welcome-message {
-  font-family: 'Yekan', 'Lalezar', sans-serif;
+  font-family: "Yekan", sans-serif;
 }
 
 /* LTR default */
 [dir="ltr"] body {
-  font-family: 'Geologica', 'JosefinSans', sans-serif;
+  font-family: "Geologica", "JosefinSans", sans-serif;
 }
