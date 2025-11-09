@@ -1,17 +1,17 @@
-// React Router imports for routing
-import { Route, Routes } from 'react-router-dom';
-
-// Page component imports
-import ToLogin from '@/pages/toLogin/ToLogin';
-import ToSignUp from '@/pages/toSignUp/ToSignUp';
-import WelcomePage from '@/pages/welcome/WelcomePage';
-import { SaveInfoProvider } from './components/SaveInfo';
-
-
+// Library
+import { Route, Routes } from "react-router-dom";
+// components
+import ChangeLang from "@/language/ChangeLang";
+import ToLogin from "@/pages/toLogin/ToLogin";
+import ToSignUp from "@/pages/toSignUp/ToSignUp";
+import WelcomePage from "@/pages/welcome/WelcomePage";
+// Context
+import { SaveInfoProvider } from "./context/SaveInfo";
 
 export default function App() {
   return (
     <SaveInfoProvider>
+      <ChangeLang />
       <Routes>
         <Route path="/" element={<ToLogin />} />
         <Route path="/signup" element={<ToSignUp />} />
@@ -20,5 +20,3 @@ export default function App() {
     </SaveInfoProvider>
   );
 }
-
-

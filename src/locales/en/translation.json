@@ -1,0 +1,44 @@
+{
+  "welcome": {
+    "hello": "Hello {{name}}!",
+    "title": "Welcome! It's Nice To See You Here",
+    "logout": "Logout"
+  },
+  "login": {
+    "title": "Welcome back!",
+    "subtitle": "Enter your Credentials to access your account",
+    "emailLabel": "Enter your email",
+    "passwordLabel": "Password",
+    "remember": "Remember for 30 days",
+    "directive": "ltr",
+    "button": {
+      "login": "Login",
+      "signing": "Signing in...",
+      "success": "✓ Login Successful!"
+    },
+    "noAccount": "Don't have an account?",
+    "signup": "Sign Up"
+  },
+  "signup": {
+    "title": "Create an account!",
+    "usernameLabel": "Enter your username",
+    "emailLabel": "Enter your email",
+    "passwordLabel": "Password",
+    "policy": "I agree to the terms and policies.",
+    "button": {
+      "signup": "Sign Up",
+      "registering": "Registering...",
+      "success": "✓ Registration Successful!"
+    },
+    "haveAccount": "Already have an account?",
+    "login": "Login"
+  },
+  "alerts": {
+    "loginSuccess": "You have successfully logged in!",
+    "signupSuccess": "You have successfully signed up!",
+    "loginError": "Login failed! Please check your credentials.",
+    "signupError": "Sign Up failed! Please check your input.",
+    "defaultSuccess": "successful!",
+    "defaultError": "An error occurred. Please try again."
+  }
+}

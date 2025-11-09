@@ -1,4 +1,4 @@
-// MUI Component
+// Component
 import { createTheme } from "@mui/material";
 
 // Theme configuration

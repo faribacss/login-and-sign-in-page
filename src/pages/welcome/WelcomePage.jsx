@@ -1,44 +1,50 @@
+// Library
+import { useContext, useState } from "react";
+import { useTranslation } from "react-i18next";
+// context
+import { SaveInfoContext } from "@/context/SaveInfo.jsx";
+// Components
+import { Link } from "react-router-dom";
+import ChangeLang from "@/language/ChangeLang";
 // CSS Module Styles
 import styles from "@/pages/welcome/WelcomePage.module.css";
 
-// React Router Components
-import { Link } from "react-router-dom";
-
-import { SaveInfoContext } from "@/components/SaveInfo";
-import { useContext, useState } from "react";
-
 function WelcomePage() {
+  // state and context
   const { user } = useContext(SaveInfoContext);
   const [logoutUser, setLogoutUser] = useState(SaveInfoContext);
+  const { t } = useTranslation();
 
-  // Logout 
+  // Logout
   const handleLogout = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("jwt");
     setLogoutUser(null);
-    // console.log(logoutUser, "User logged out");
-  }
+  };
 
   return (
-    <div className={styles.welcomeContainer}>
-      <div className={styles.welcome}>
-        <h1
-          className={`${styles.welcomeMessage} animate__animated animate__tada`}>
-          Hello <span className={styles.username}>{user?.username}!</span>
-        </h1>
-        <p
-          className={`${styles.welcomeTitle} animate__animated animate__backInDown animate__slower`}>
-          Welcome! It's Nice To See You Here
-        </p>
-        <div className="animate__animated animate__fadeInUp animate__delay-3s animate__slow">
-          <button onClick={handleLogout} className={styles.welcomeButton}>
-            <Link to="/" className={styles.welcomeLink}>
-              Logout
+    <>
+      <ChangeLang />
+      <div className={styles.welcomeContainer}>
+        <div className={styles.welcome}>
+          <h1
+            className={`${styles.welcomeMessage} animate__animated animate__tada`}
+          >
+            {t("welcome.hello", { name: user?.username || "" })}
+          </h1>
+          <p
+            className={`${styles.welcomeTitle} animate__animated animate__backInDown animate__slower`}
+          >
+            {t("welcome.title")}
+          </p>
+          <div className="animate__animated animate__fadeInUp animate__delay-3s animate__slow">
+            <Link onClick={handleLogout} to="/" className={styles.welcomeLink}>
+              {t("welcome.logout")}
             </Link>
-          </button>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 export default WelcomePage;

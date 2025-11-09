@@ -1,120 +1,167 @@
-/* fonts */
+/* en fonts */
 @font-face {
-    font-family: "BricolageBold";
-    src: url('@/fonts/BricolageBold.ttf') format('truetype');
+  font-family: "BricolageBold";
+  src: url("@/fonts/BricolageBold.ttf") format("truetype");
 }
 @font-face {
-    font-family: "Geologica";
-    src: url('@/fonts/Geologica.ttf') format('truetype');
+  font-family: "Geologica";
+  src: url("@/fonts/Geologica.ttf") format("truetype");
 }
 @font-face {
-    font-family: "Chango";
-    src: url('@/fonts/Chango.ttf') format('truetype');
+  font-family: "Chango";
+  src: url("@/fonts/Chango.ttf") format("truetype");
 }
 @font-face {
-    font-family: "JosefinSans";
-    src: url('@/fonts/JosefinSans.ttf') format('truetype');
+  font-family: "JosefinSans";
+  src: url("@/fonts/JosefinSans.ttf") format("truetype");
 }
-
+/* fa fonts */
+@font-face {
+  font-family: "VazirBold";
+  src: url("@/assets/public/fonts/VazirBold.woff2") format("woff2"),
+    url("@/assets/public/fonts/VazirBold.woff") format("woff");
+}
+@font-face {
+  font-family: "VazirMedium";
+  src: url("@/assets/public/fonts/VazirMedium.woff2") format("woff2"),
+    url("@/assets/public/fonts/VazirMedium.woff") format("woff");
+}
+@font-face {
+  font-family: "Lalezar";
+  src: url("@/assets/public/fonts/LalezarRegular.otf") format("opentype");
+}
+@font-face {
+  font-family: "Yekan";
+  src: url("@/assets/public/fonts/BYekan.ttf") format("truetype");
+}
+@font-face {
+  font-family: "YekanBold";
+  src: url("@/assets/public/fonts/BYekanBold.ttf") format("truetype");
+}
 
 /* Custom SweetAlert Font */
 .custom-swal {
-    font-family: "BricolageBold" !important;
-    font-weight: 400 !important;
-    font-size: 12px !important;
+  font-family: "BricolageBold" !important;
+  font-weight: 400 !important;
+  font-size: 12px !important;
 }
-
 
 /* login and sign up Common css styles */
 .connections {
-    width: 190px;
-    height: 32px;
-    padding: 4px;
-    border-radius: 10px;
-    border: 1px solid #D9D9D9;
+  width: 190px;
+  height: 32px;
+  padding: 4px;
+  border-radius: 10px;
+  border: 1px solid #d9d9d9;
 }
 
 .auth-title {
-    font-family: "Geologica";
-    font-weight: 800;
-    font-size: 30px;
-    letter-spacing: 0.01em;
-    gap: 10px;
+  font-family: "Geologica";
+  font-weight: 800;
+  font-size: 30px;
+  letter-spacing: 0.01em;
+  gap: 10px;
 }
 
 .auth-text-field {
-    width: 404px;
-    height: 58px;
-    margin: 5px 0px;
+  width: 404px;
+  height: 58px;
+  margin: 5px 0px;
 }
-.auth-checkBox{
-    margin: 18px 0;
+.auth-checkBox {
+  margin: 18px 0;
 }
 .auth-button-base {
-    width: 404px;
-    height: 48px;
-    padding: 10px;
-    border-radius: 10px;
-    color: #FFFFFF;
+  width: 404px;
+  height: 48px;
+  padding: 10px;
+  border-radius: 10px;
+  color: #ffffff;
 }
 
 .auth-primary-button {
-    background-color: #3A5B22;
-    border: 1px solid #3A5B22;
+  background-color: #3a5b22;
+  border: 1px solid #3a5b22;
 }
 
 .auth-primary-button:hover {
-    background-color: #2d4619;
+  background-color: #2d4619;
 }
 
 .auth-disabled-button {
-    color: #666666;
-    background-color: #cccccc;
-    border: 1px solid #cccccc;
+  color: #666666;
+  background-color: #cccccc;
+  border: 1px solid #cccccc;
 }
 
 .auth-disabled-button:hover {
-    background-color: #cccccc;
+  background-color: #cccccc;
 }
 
 .auth-or-text {
-    margin-top: 16px;
-    text-align: center;
+  margin-top: 16px;
+  text-align: center;
 }
 
 .auth-connections-stack {
-    width: 100%;
-    margin-top: 16px;
-    justify-content: center;
+  width: 100%;
+  margin-top: 16px;
+  justify-content: center;
 }
 
 .auth-bottom-text {
-    margin-top: 24px;
-    text-align: center;
+  margin-top: 24px;
+  text-align: center;
 }
 
 .auth-link {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .auth-image-box {
-    width: 781.5px;
-    height: auto;
-    border-top-left-radius: 45px;
-    border-bottom-left-radius: 45px;
+  width: 781.5px;
+  height: auto;
+  border-top-left-radius: 45px;
+  border-bottom-left-radius: 45px;
 }
 
 @media (max-width: 900px) {
-    .auth-image-box {
-        max-width: 100%;
-    }
+  .auth-image-box {
+    max-width: 100%;
+  }
 }
 
 /* Social Login Icons */
 .google-icon {
-    color: #4285F4 !important;
+  color: #4285f4 !important;
 }
 
 .apple-icon {
-    color: #000000 !important;
+  color: #000000 !important;
+}
+
+/* Apply Persian fonts automatically when document direction is RTL */
+[dir="rtl"] body {
+  font-family: 'Yekan', 'VazirMedium', sans-serif;
+}
+
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4,
+[dir="rtl"] h5,
+[dir="rtl"] h6,
+[dir="rtl"] p,
+[dir="rtl"] span,
+[dir="rtl"] bottom,
+[dir="rtl"] .auth-title {
+  font-family: 'Yekan', 'Lalezar', sans-serif;
+}
+[dir="rtl"] .welcome-message {
+  font-family: 'Yekan', 'Lalezar', sans-serif;
+}
+
+/* LTR default */
+[dir="ltr"] body {
+  font-family: 'Geologica', 'JosefinSans', sans-serif;
 }

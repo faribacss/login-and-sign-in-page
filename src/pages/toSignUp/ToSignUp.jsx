@@ -1,4 +1,10 @@
-// MUI Components
+// Library
+import { useState, useContext } from "react";
+
+// Context
+import { SaveInfoContext } from "@/context/SaveInfo.jsx";
+
+// Components
 import {
   Box,
   Button,
@@ -9,15 +15,9 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-
-// React Router Components
 import { Link, useNavigate } from "react-router-dom";
-
-// React Hooks
-import { useState, useContext } from "react";
-
-// Context
-import { SaveInfoContext } from "@/components/SaveInfo";
+import ShowPassword from "@/components/ShowPassword";
+// import SocialLoginButtons from "@/component/SocialLoginButtons";
 
 // Utilities (Alert)
 import showErrorAlert from "@/utilities/showErrorAlert";
@@ -26,29 +26,24 @@ import showSuccessAlert from "@/utilities/showSuccessAlert";
 // CSS Module Styles
 import styles from "@/pages/toSignUp/ToSignUp.module.css";
 
-// ShowPassword Component
-import ShowPassword from "@/components/ShowPassword";
-
 // React Hook Form
 import { DevTool } from "@hookform/devtools";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 
-// Social Buttons Component
-// import SocialLoginButtons from "@/component/SocialLoginButtons";
-
-// Import the image for the signup page
+// image
 import loginImage from "@/assets/public/img/1.jpg";
+import { useTranslation } from "react-i18next";
 
 // Validation Schema
-const signUpSchema = yup.object().shape({
+export const signUpSchema = yup.object().shape({
   username: yup
     .string()
     .required("Username is required")
     .min(3, "Username must be at least 3 characters")
     .matches(
-      /^[a-zA-Z0-9][a-zA-Z0-9._@$-]*$/,
+      /^[A-Za-z\u0600-\u06FF0-9][A-Za-z\u0600-\u06FF0-9._@$-]*$/u,
       "Username must start with a letter or number"
     ),
   email: yup
@@ -67,6 +62,8 @@ const signUpSchema = yup.object().shape({
 });
 
 function ToSignUp() {
+  const { t, i18n } = useTranslation();
+  const isRtl = i18n?.language?.startsWith("fa");
   const {
     register,
     control,
@@ -75,6 +72,7 @@ function ToSignUp() {
     formState: { errors, isSubmitting },
   } = useForm({ resolver: yupResolver(signUpSchema), mode: "onBlur" });
 
+  // state and context
   const { register: registerUser } = useContext(SaveInfoContext);
   const [showPassword, setShowPassword] = useState(false);
   const [checkPolicy, setCheckPolicy] = useState(false);
@@ -98,8 +96,14 @@ function ToSignUp() {
 
       return user;
     } catch (error) {
-      console.error("❌ Registration error:", error);
-      showErrorAlert("signUp");
+      console.error(" Registration error:", error);
+      // error message from API
+      const errorMessage =
+        error.response?.data?.error?.message ||
+        error.message ||
+        "An unexpected error occurred during registration";
+
+      showErrorAlert("signUp", errorMessage);
     }
   };
   const handlePolicyChange = (e) => {
@@ -110,27 +114,30 @@ function ToSignUp() {
       container
       spacing={2}
       alignItems="center"
-      justifyContent={{ xs: "center", md: "center" }}>
+      justifyContent={{ xs: "center", md: "center" }}
+    >
       <Grid item xs={12} md={6} className={styles.container}>
         <Box component="section">
           <Typography
             component="h4"
             variant="h4"
             gutterBottom
-            className={`auth-title ${styles.title}`}>
-            Get Started Now
+            className={`auth-title ${styles.title}`}
+          >
+            {t("signup.title")}
           </Typography>
           <Box
             component="form"
             onSubmit={handleSubmit(handleRegister)}
-            noValidate>
+            noValidate
+          >
             <Grid container spacing={2} direction="column">
               <Grid item>
                 <TextField
                   required
                   fullWidth
                   {...register("username")}
-                  label="UserName"
+                  placeholder={t("signup.usernameLabel")}
                   type="text"
                   className="auth-text-field"
                   variant="outlined"
@@ -138,6 +145,13 @@ function ToSignUp() {
                   autoComplete="new-username"
                   error={!!errors.username}
                   helperText={errors.username?.message}
+                  InputLabelProps={{
+                    style: {
+                      width: "100%",
+                      textAlign: isRtl ? "right" : "left",
+                      direction: isRtl ? "rtl" : "ltr",
+                    },
+                  }}
                 />
               </Grid>
               <Grid item>
@@ -146,28 +160,42 @@ function ToSignUp() {
                   fullWidth
                   type="email"
                   {...register("email")}
-                  label="Email"
+                  placeholder={t("signup.emailLabel")}
                   className="auth-text-field"
                   variant="outlined"
                   color="success"
                   autoComplete="new-email"
                   error={!!errors.email}
                   helperText={errors.email?.message}
+                  InputLabelProps={{
+                    style: {
+                      width: "100%",
+                      textAlign: isRtl ? "right" : "left",
+                      direction: isRtl ? "rtl" : "ltr",
+                    },
+                  }}
                 />
               </Grid>
-              <Grid item>
+              <Grid>
                 <TextField
                   required
                   fullWidth
                   type={showPassword ? "text" : "password"}
                   {...register("password")}
-                  label="Password"
+                  placeholder={t("signup.passwordLabel")}
                   className="auth-text-field"
                   variant="outlined"
                   color="success"
                   autoComplete="new-password"
                   error={!!errors.password}
                   helperText={errors.password?.message}
+                  InputLabelProps={{
+                    style: {
+                      width: "100%",
+                      textAlign: isRtl ? "right" : "left",
+                      direction: isRtl ? "rtl" : "ltr",
+                    },
+                  }}
                   InputProps={{
                     endAdornment: (
                       <ShowPassword
@@ -175,6 +203,7 @@ function ToSignUp() {
                         onToggle={() => setShowPassword(!showPassword)}
                       />
                     ),
+                    style: { direction: isRtl ? "rtl" : "ltr" },
                   }}
                 />
               </Grid>
@@ -188,7 +217,13 @@ function ToSignUp() {
                         className="auth-checkBox"
                       />
                     }
-                    label="I agree to the terms & policy"
+                    label={t("signup.policy")}
+                    sx={{
+                      width: "100%",
+                      margin: "0",
+                      textAlign: isRtl ? "right" : "left",
+                      direction: isRtl ? "rtl" : "ltr",
+                    }}
                   />
                 </FormGroup>
               </Grid>
@@ -204,12 +239,13 @@ function ToSignUp() {
                       : checkPolicy
                       ? "auth-primary-button"
                       : "auth-disabled-button"
-                  }`}>
+                  }`}
+                >
                   {isSuccess
-                    ? "✓ Registration Successful!"
+                    ? t("signup.button.success")
                     : isSubmitting
-                    ? "Creating Account..."
-                    : "Sign up"}
+                    ? t("signup.button.registering")
+                    : t("signup.button.signup")}
                 </Button>
               </Grid>
               {/* <Grid item>
@@ -223,9 +259,9 @@ function ToSignUp() {
             </Grid>
           </Box>
           <Typography className="auth-bottom-text">
-            Have an account?{" "}
+            {t("signup.haveAccount")}{" "}
             <Link to="/" className="auth-link">
-              Sign In
+              {t("signup.login")}
             </Link>
           </Typography>
         </Box>

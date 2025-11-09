@@ -1,6 +1,9 @@
+// Library
 import { createContext, useState } from "react";
+// Services
 import { registerUser, login } from "@/services/authentication";
 
+// Context
 export const SaveInfoContext = createContext(null);
 
 export const SaveInfoProvider = ({ children }) => {

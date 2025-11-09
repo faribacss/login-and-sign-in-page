@@ -1,15 +1,17 @@
 // SweetAlert2 for displaying success alerts
+import { t } from "i18next";
 import Swal from "sweetalert2";
+
 
 function showSuccessAlert(type = "default") {
     const titleMessage = () => {
         switch (type) {
             case "login":
-                return "You have successfully logged in!";
+                return t("alerts.loginSuccess");
             case "signUp":
-                return "You have successfully signed up!";
+                return t("alerts.signupSuccess");
             default:
-                return "Success!";
+                return t("alerts.defaultSuccess");
         }
     };
     return Swal.fire({

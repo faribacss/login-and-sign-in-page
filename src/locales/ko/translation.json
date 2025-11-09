@@ -1,0 +1,44 @@
+{
+  "welcome": {
+    "hello": "안녕하세요 {{name}}!",
+    "title": "환영합니다!",
+    "logout": "로그아웃"
+  },
+  "login": {
+    "title": "계정에 로그인하세요!",
+    "subtitle": "계정에 접근하려면 자격 증명을 입력하세요",
+    "emailLabel": "이메일을 입력하세요",
+    "passwordLabel": "비밀번호",
+    "remember": "30일 동안 기억하기",
+    "directive": "ltr",
+    "button": {
+      "login": "로그인",
+      "signing": "로그인 중...",
+      "success": "✓ 로그인 성공!"
+    },
+    "noAccount": "계정이 없으신가요?",
+    "signup": "회원가입"
+  },
+  "signup": {
+    "title": "계정 생성하기!",
+    "usernameLabel": "사용자 이름을 입력하세요",
+    "emailLabel": "이메일을 입력하세요",
+    "passwordLabel": "비밀번호",
+    "policy": "약관 및 정책에 동의합니다.",
+    "button": {
+      "signup": "회원가입",
+      "registering": "등록 중...",
+      "success": "✓ 회원가입 성공!"
+    },
+    "haveAccount": "이미 계정이 있으신가요?",
+    "login": "로그인"
+  },
+  "alerts": {
+    "loginSuccess": "성공적으로 로그인하셨습니다!",
+    "signupSuccess": "성공적으로 회원가입하셨습니다!",
+    "loginError": "로그인 실패! 자격 증명을 확인하세요.",
+    "signupError": "회원가입 실패! 입력 내용을 확인하세요.",
+    "defaultSuccess": "성공!",
+    "defaultError": "오류가 발생했습니다. 다시 시도하세요."
+  }
+}

@@ -1,12 +1,15 @@
-// Library imports
+// Library
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { HashRouter } from "react-router-dom";
 
-// component import
+// i18n (initialize before app)
+import "./i18n";
+
+// components
 import App from "@/App.jsx";
 
-// Style
+// Styles
 import "animate.css";
 import "@/index.css";
 import { CssBaseline, ThemeProvider } from "@mui/material";

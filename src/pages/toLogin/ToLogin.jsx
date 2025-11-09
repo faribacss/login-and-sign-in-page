@@ -1,4 +1,10 @@
-// MUI Components
+// Library
+import { useState, useContext } from "react";
+
+// Context
+import { SaveInfoContext } from "@/context/SaveInfo.jsx";
+
+// Components
 import {
   Box,
   Button,
@@ -9,40 +15,29 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { Link, useNavigate } from "react-router-dom";
+import ShowPassword from "@/components/ShowPassword";
+// import SocialLoginButtons from "component/SocialLoginButtons";
 
 // React Hook Form
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 
-// React Hooks
-import { useState, useContext } from "react";
-
-// React Router Components
-import { Link, useNavigate } from "react-router-dom";
-
 // CSS Module Styles
 import styles from "@/pages/toLogin/ToLogin.module.css";
-
-// ShowPassword Component
-import ShowPassword from "@/components/ShowPassword";
-
-// Context
-import { SaveInfoContext } from "@/components/SaveInfo";
-
-// Social Buttons Component
-// import SocialLoginButtons from "component/SocialLoginButtons";
 
 // Utilities (Alert)
 import showErrorAlert from "@/utilities/showErrorAlert";
 import showSuccessAlert from "@/utilities/showSuccessAlert";
 import { DevTool } from "@hookform/devtools";
+import { useTranslation } from "react-i18next";
 
-// Import the image for the login page
+// image
 import loginImage from "@/assets/public/img/1.jpg";
 
-// Login Validation Schema
-const loginSchema = yup.object({
+// Validation Schema
+export const loginSchema = yup.object({
   identifier: yup
     .string()
     .required("Email or Username is required")
@@ -54,6 +49,8 @@ const loginSchema = yup.object({
 });
 
 function ToLogin() {
+  const { t, i18n } = useTranslation();
+  const isRtl = i18n?.language?.startsWith("fa");
   const {
     register,
     control,
@@ -64,6 +61,7 @@ function ToLogin() {
     mode: "onBlur",
   });
 
+  // state and context
   const { loginUser } = useContext(SaveInfoContext);
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
@@ -85,24 +83,30 @@ function ToLogin() {
 
       return user;
     } catch (error) {
-      showErrorAlert("login");
+      // error message from API
+      const errorMessage =
+        error.response?.data?.error?.message ||
+        error.message ||
+        "An unexpected error occurred";
+
+      showErrorAlert("login", errorMessage);
       console.error("Login error:", error);
     }
   };
-
   return (
     <Grid
       container
       spacing={2}
       alignItems="center"
-      justifyContent={{ xs: "center" }}>
+      justifyContent={{ xs: "center" }}
+    >
       <Grid className={styles.container}>
         <Box component="section">
           <Typography variant="h2" gutterBottom className="auth-title">
-            Welcome back!
+            {t("login.title")}
           </Typography>
           <Typography variant="subtitle2" className={styles.subtitle}>
-            Enter your Credentials to access your account
+            {t("login.subtitle")}
           </Typography>
           <Box component="form" onSubmit={handleSubmit(handleLogin)}>
             <Grid container spacing={2} direction="column">
@@ -112,7 +116,14 @@ function ToLogin() {
                   fullWidth
                   type="email"
                   {...register("identifier")}
-                  label="Enter your email"
+                  placeholder={t("login.emailLabel")}
+                  InputLabelProps={{
+                    style: {
+                      width: "100%",
+                      textAlign: isRtl ? "right" : "left",
+                      direction: isRtl ? "rtl" : "ltr",
+                    },
+                  }}
                   className="auth-text-field"
                   variant="outlined"
                   color="success"
@@ -126,7 +137,14 @@ function ToLogin() {
                   fullWidth
                   type={showPassword ? "text" : "password"}
                   {...register("password")}
-                  label="Password"
+                  placeholder={t("login.passwordLabel")}
+                  InputLabelProps={{
+                    style: {
+                      width: "100%",
+                      textAlign: isRtl ? "right" : "left",
+                      direction: isRtl ? "rtl" : "ltr",
+                    },
+                  }}
                   className="auth-text-field"
                   variant="outlined"
                   color="success"
@@ -139,6 +157,7 @@ function ToLogin() {
                         onToggle={() => setShowPassword(!showPassword)}
                       />
                     ),
+                    style: { direction: isRtl ? "rtl" : "ltr" },
                   }}
                 />
               </Grid>
@@ -152,7 +171,13 @@ function ToLogin() {
                         color="success"
                       />
                     }
-                    label="Remember for 30 days"
+                    label={t("login.remember")}
+                    sx={{
+                      width: "100%",
+                      margin: "0",
+                      textAlign: isRtl ? "right" : "left",
+                      direction: isRtl ? "rtl" : "ltr",
+                    }}
                   />
                 </FormGroup>
               </Grid>
@@ -165,31 +190,25 @@ function ToLogin() {
                   fullWidth
                   className={`auth-button-base ${
                     isSuccess ? "auth-success-button" : "auth-primary-button"
-                  }`}>
+                  }`}
+                >
                   {isSuccess
-                    ? "✓ Login Successful!"
+                    ? t("login.button.success")
                     : isSubmitting
-                    ? "Signing in..."
-                    : "Login"}
+                    ? t("login.button.signing")
+                    : t("login.button.login")}
                 </Button>
               </Grid>
-              {/* <Grid>
-              <Typography variant="body2" className="auth-or-text">
-                Or
-              </Typography>
-            </Grid>
-
-            <Grid>
-              <SocialLoginButtons />
-            </Grid> */}
+              <Grid>
+                <Typography className="auth-bottom-text">
+                  {t("login.noAccount")}{" "}
+                  <Link to="/signup" className="auth-link">
+                    {t("login.signup")}
+                  </Link>
+                </Typography>
+              </Grid>
             </Grid>
           </Box>
-          <Typography className="auth-bottom-text">
-            Don't have an account?{" "}
-            <Link to="/signup" className="auth-link">
-              Sign Up
-            </Link>
-          </Typography>
         </Box>
       </Grid>
       <Grid>

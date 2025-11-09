@@ -2,7 +2,7 @@
 import axios from "axios";
 
 // API URL
-const API_URL = "https://strapi.arvanschool.ir/api/";
+export const API_URL = "https://strapi.arvanschool.ir/api/";
 
 // Save user and jwt to local storage
 const saveToStorage = (user, jwt, callback) => {
