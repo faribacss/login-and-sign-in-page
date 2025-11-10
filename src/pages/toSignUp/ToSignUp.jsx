@@ -216,12 +216,7 @@ function ToSignUp() {
                       />
                     }
                     label={t("signup.policy")}
-                    sx={{
-                      width: "100%",
-                      margin: "0",
-                      textAlign: isRtl ? "right" : "left",
-                      direction: isRtl ? "rtl" : "ltr",
-                    }}
+                    className={styles.policyLabel}
                   />
                 </FormGroup>
               </Grid>

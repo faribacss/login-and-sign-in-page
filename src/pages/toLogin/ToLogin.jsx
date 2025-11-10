@@ -170,12 +170,7 @@ function ToLogin() {
                       />
                     }
                     label={t("login.remember")}
-                    sx={{
-                      width: "100%",
-                      margin: "0",
-                      textAlign: isRtl ? "right" : "left",
-                      direction: isRtl ? "rtl" : "ltr",
-                    }}
+                    className={styles.rememberMeLabel}
                   />
                 </FormGroup>
               </Grid>

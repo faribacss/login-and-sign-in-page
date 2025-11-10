@@ -55,7 +55,7 @@
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 
-/* persian */
+/* persian fonts */
 [dir="rtl"] .logoutLink {
   font-family: "Yekan", sans-serif;
 }
@@ -64,7 +64,7 @@
   font-family: "Lalezar", sans-serif;
 }
 
-/* english */
+/* english fonts */
 html[lang="en"] .logoutLink {
   font-family: "BricolageBold" sans-serif;
 }
@@ -75,9 +75,22 @@ html[lang="en"] .welcomeTitle {
   font-family: "Geologica", cursive;
 }
 
-/* korean */
+/* korean fonts */
 html[lang="ko"] .welcomeTitle,
 html[lang="ko"] .logoutLink,
 html[lang="ko"] .welcomeMessage {
   font-family: "CafeDongdong", cursive;
+}
+
+@media screen and (max-width: 720px) {
+  .welcome{
+    height: 90vh;
+  }
+  .welcomeMessage{
+    font-size: 40px !important;
+    margin-bottom: 15px !important;
+  }
+  .welcomeTitle{
+    font-size: 20px !important;
+  }
 }

@@ -47,9 +47,18 @@
 }
 @font-face {
   font-family: "JejuMyeongjo";
-  src: url("@/assets/public/fonts/ko/JejuMyeongjo-Regular.ttf") format("truetype");
+  src: url("@/assets/public/fonts/ko/JejuMyeongjo-Regular.ttf")
+    format("truetype");
 }
 
+/* global style */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
 /* Custom SweetAlert Font */
 .custom-swal {
   font-family: "BricolageBold" !important;
@@ -146,20 +155,30 @@
 }
 
 /* media query */
-@media (max-width: 900px) {
+@media screen and (max-width: 720px) {
   .auth-image-box {
     max-width: 100%;
+    border-radius: 0;
   }
-}
-@media screen and (max-width: 720px) {
-  .auth-text-field , .auth-button-base  {
+  .auth-text-field,
+  .auth-button-base {
     max-width: 70% !important;
   }
-  label {
+  .auth-title {
+    font-size: 24px !important;
+  }
+  html[lang="en"] label,
+  html[lang="ko"] label {
     display: flex;
     justify-content: center;
     position: relative;
-    left: 8%;
+    left: 18%;
+  }
+  html[lang="fa"] label {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    right: 11%;
   }
 }
 
@@ -185,16 +204,16 @@ html[lang="en"] body {
 
 /* korean font */
 html[lang="ko"] body {
-  font-family: "PinkfongBabySharkBold",  sans-serif;
+  font-family: "PinkfongBabySharkBold", sans-serif;
 }
 html[lang="ko"] .auth-primary-button,
 html[lang="ko"] .auth-title {
-  font-family: "MoneygraphyRounded",  sans-serif;
+  font-family: "MoneygraphyRounded", sans-serif;
 }
-html[lang="ko"] input::placeholder{
-  font-family: "JejuMyeongjo",  sans-serif;
+html[lang="ko"] input::placeholder {
+  font-family: "JejuMyeongjo", sans-serif;
 }
 html[lang="ko"] span,
 html[lang="ko"] p {
-  font-family: "JejuMyeongjo",  sans-serif;
+  font-family: "JejuMyeongjo", sans-serif;
 }

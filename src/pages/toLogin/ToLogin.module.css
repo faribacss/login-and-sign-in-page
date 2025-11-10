@@ -7,7 +7,7 @@
   font-weight: 400;
   font-size: 16px;
 }
-.forgotpass{
+/* .forgotpass{
     position: relative;
 }
 .forgotpass::after {
@@ -21,11 +21,18 @@
     height: 1px;
     color: #0C2A92;
     cursor: pointer;
+} */
+
+.rememberMeLabel {
+  width: fit-content;
 }
 
 @media screen and (max-width: 720px) {
   .container {
     margin: 100px auto 20px;
+  }
+  .subtitle{
+    font-size: 13px !important;
   }
   section{
     text-align: center;
