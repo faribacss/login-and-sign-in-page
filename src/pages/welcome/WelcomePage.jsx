@@ -19,6 +19,7 @@ function WelcomePage() {
   const handleLogout = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("jwt");
+    window.location.reload("/");
     setLogoutUser(null);
   };
 

@@ -19,6 +19,7 @@ function ChangeLang() {
   useEffect(() => {
     // fall back to localStorage
     const lang = i18n?.language || localStorage.getItem("lang") || "en";
+    document.documentElement.lang = lang;
     if (lang?.startsWith("fa")) {
       document.documentElement.dir = "rtl";
       setPersianLang(true);
@@ -49,6 +50,7 @@ function ChangeLang() {
   // change app language in a single place
   const changeAppLanguage = (lang) => {
     const isFa = String(lang).startsWith("fa");
+    document.documentElement.lang = lang;
     document.documentElement.dir = isFa ? "rtl" : "ltr";
     i18n.changeLanguage(lang);
     localStorage.setItem("lang", lang);

@@ -3,5 +3,14 @@
   margin: 0 auto;
 }
 .title {
-  margin: 35px 0;
+  margin: 20px 0;
+}
+
+@media screen and (max-width: 720px) {
+  .container {
+    margin: 100px auto 20px;
+  }
+  section{
+    text-align: center;
+  }
 }

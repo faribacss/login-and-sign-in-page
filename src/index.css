@@ -1,40 +1,53 @@
 /* en fonts */
 @font-face {
   font-family: "BricolageBold";
-  src: url("@/assets/public/fonts/BricolageBold.ttf") format("truetype");
+  src: url("@/assets/public/fonts/en/BricolageBold.ttf") format("truetype");
 }
 @font-face {
   font-family: "Geologica";
-  src: url("@/assets/public/fonts/Geologica.ttf") format("truetype");
+  src: url("@/assets/public/fonts/en/Geologica.ttf") format("truetype");
 }
 @font-face {
   font-family: "Chango";
-  src: url("@/assets/public/fonts/Chango.ttf") format("truetype");
+  src: url("@/assets/public/fonts/en/Chango.ttf") format("truetype");
 }
 @font-face {
   font-family: "JosefinSans";
-  src: url("@/assets/public/fonts/JosefinSans.ttf") format("truetype");
+  src: url("@/assets/public/fonts/en/JosefinSans.ttf") format("truetype");
 }
 /* fa fonts */
 @font-face {
   font-family: "VazirBold";
-  src: url("@/assets/public/fonts/VazirBold.woff2") format("woff2");
+  src: url("@/assets/public/fonts/fa/VazirBold.woff2") format("woff2");
 }
 @font-face {
   font-family: "VazirMedium";
-  src: url("@/assets/public/fonts/VazirMedium.woff2") format("woff2");
+  src: url("@/assets/public/fonts/fa/VazirMedium.woff2") format("woff2");
 }
 @font-face {
   font-family: "Lalezar";
-  src: url("@/assets/public/fonts/LalezarRegular.otf") format("opentype");
+  src: url("@/assets/public/fonts/fa/LalezarRegular.otf") format("opentype");
 }
 @font-face {
   font-family: "Yekan";
-  src: url("@/assets/public/fonts/BYekan.ttf") format("truetype");
+  src: url("@/assets/public/fonts/fa/BYekan.ttf") format("truetype");
 }
 @font-face {
   font-family: "YekanBold";
-  src: url("@/assets/public/fonts/BYekanBold.ttf") format("truetype");
+  src: url("@/assets/public/fonts/fa/BYekanBold.ttf") format("truetype");
+}
+/* ko fonts */
+@font-face {
+  font-family: "CafeDongdong";
+  src: url("@/assets/public/fonts/ko/Cafe24Dongdong-v2.0.woff") format("woff");
+}
+@font-face {
+  font-family: "MoneygraphyRounded";
+  src: url("@/assets/public/fonts/ko/Moneygraphy-Rounded.woff") format("woff");
+}
+@font-face {
+  font-family: "JejuMyeongjo";
+  src: url("@/assets/public/fonts/ko/JejuMyeongjo-Regular.ttf") format("truetype");
 }
 
 /* Custom SweetAlert Font */
@@ -67,7 +80,7 @@
   margin: 5px 0px;
 }
 .auth-checkBox {
-  margin: 18px 0;
+  margin: 2px 0;
 }
 .auth-button-base {
   width: 404px;
@@ -123,12 +136,6 @@
   border-bottom-left-radius: 45px;
 }
 
-@media (max-width: 900px) {
-  .auth-image-box {
-    max-width: 100%;
-  }
-}
-
 /* Social Login Icons */
 .google-icon {
   color: #4285f4 !important;
@@ -138,22 +145,56 @@
   color: #000000 !important;
 }
 
-/* Apply Persian fonts automatically when document direction is RTL */
-[dir="rtl"] h1,
-[dir="rtl"] h2,
-[dir="rtl"] h3,
-[dir="rtl"] h4,
-[dir="rtl"] h5,
-[dir="rtl"] h6,
-[dir="rtl"] p,
-[dir="rtl"] span,
-[dir="rtl"] .auth-primary-button,
-[dir="rtl"] input::placeholder,
-[dir="rtl"] .auth-title {
+/* media query */
+@media (max-width: 900px) {
+  .auth-image-box {
+    max-width: 100%;
+  }
+}
+@media screen and (max-width: 720px) {
+  .auth-text-field , .auth-button-base  {
+    max-width: 70% !important;
+  }
+  label {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    left: 8%;
+  }
+}
+
+/* persian font */
+html[lang="fa"] h1,
+html[lang="fa"] h2,
+html[lang="fa"] h3,
+html[lang="fa"] h4,
+html[lang="fa"] h5,
+html[lang="fa"] h6,
+html[lang="fa"] p,
+html[lang="fa"] span,
+html[lang="fa"] .auth-primary-button,
+html[lang="fa"] input::placeholder,
+html[lang="fa"] .auth-title {
   font-family: "Yekan", sans-serif;
 }
 
-/* LTR default */
-[dir="ltr"] body {
+/* english font */
+html[lang="en"] body {
   font-family: "Geologica", "JosefinSans", sans-serif;
+}
+
+/* korean font */
+html[lang="ko"] body {
+  font-family: "PinkfongBabySharkBold",  sans-serif;
+}
+html[lang="ko"] .auth-primary-button,
+html[lang="ko"] .auth-title {
+  font-family: "MoneygraphyRounded",  sans-serif;
+}
+html[lang="ko"] input::placeholder{
+  font-family: "JejuMyeongjo",  sans-serif;
+}
+html[lang="ko"] span,
+html[lang="ko"] p {
+  font-family: "JejuMyeongjo",  sans-serif;
 }

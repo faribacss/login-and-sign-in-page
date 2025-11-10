@@ -1,6 +1,6 @@
 /* ToLogin Component Specific Styles */
 .container {
-  margin: 25px auto;
+  margin: 50px auto;
 }
 .subtitle {
   margin-bottom: 30px;
@@ -21,4 +21,18 @@
     height: 1px;
     color: #0C2A92;
     cursor: pointer;
+}
+
+@media screen and (max-width: 720px) {
+  .container {
+    margin: 100px auto 20px;
+  }
+  section{
+    text-align: center;
+  }
+}
+
+html[lang="ko"] .subtitle {
+  font-family: "JejuMyeongjo",  sans-serif;
+  font-size: 20px;
 }

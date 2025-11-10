@@ -42,7 +42,7 @@ export const signUpSchema = yup.object().shape({
     .required("Username is required")
     .min(3, "Username must be at least 3 characters")
     .matches(
-      /^[A-Za-z\u0600-\u06FF0-9][A-Za-z\u0600-\u06FF0-9._@$-]*$/u,
+      /^[A-Za-z\u0600-\u06FF\uAC00-\uD7AF0-9][A-Za-z\u0600-\u06FF\uAC00-\uD7AF0-9._@$-]*$/u,
       "Username must start with a letter or number"
     ),
   email: yup
