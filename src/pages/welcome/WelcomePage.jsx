@@ -38,8 +38,8 @@ function WelcomePage() {
           >
             {t("welcome.title")}
           </p>
-          <div className="animate__animated animate__fadeInUp animate__delay-3s animate__slow">
-            <Link onClick={handleLogout} to="/" className={styles.logoutLink}>
+          <div className={` ${styles.logoutLink} animate__animated animate__fadeInUp animate__delay-3s animate__slow`}>
+            <Link onClick={handleLogout} to="/">
               {t("welcome.logout")}
             </Link>
           </div>

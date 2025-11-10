@@ -9,6 +9,7 @@
   flex-direction: column;
   width: fit-content;
   margin: 40px;
+  z-index: 1000;
 }
 
 .langButton {
