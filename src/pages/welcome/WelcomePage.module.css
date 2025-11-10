@@ -59,7 +59,7 @@
 }
 
 /* persian fonts */
-[dir="rtl"] .logoutLink {
+[dir="rtl"] .logoutLink a {
   font-family: "Yekan", sans-serif;
 }
 [dir="rtl"] .welcomeTitle,
@@ -68,7 +68,7 @@
 }
 
 /* english fonts */
-html[lang="en"] .logoutLink {
+html[lang="en"] .logoutLink a {
   font-family: "BricolageBold" sans-serif;
 }
 html[lang="en"] .welcomeMessage {
@@ -80,9 +80,11 @@ html[lang="en"] .welcomeTitle {
 
 /* korean fonts */
 html[lang="ko"] .welcomeTitle,
-html[lang="ko"] .logoutLink,
 html[lang="ko"] .welcomeMessage {
   font-family: "CafeDongdong", cursive;
+}
+html[lang="ko"] .logoutLink a{
+  font-family: "JejuMyeongjo", serif;
 }
 
 @media screen and (max-width: 720px) {
